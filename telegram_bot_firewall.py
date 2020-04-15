@@ -1,7 +1,7 @@
 import re
 from telegram.ext import Updater, CommandHandler
 import requests
-
+import subprocess
 
 def get_url():
     contents = requests.get('https://random.dog/woof.json').json() 
@@ -23,11 +23,15 @@ def bop(bot, update):
     chat_id = update.message.chat_id
     bot.send_photo(chat_id=chat_id, photo=url)
 
-
+def fortune(bot, update):
+    fortune = subprocess.getoutput('fortune')
+    update.message.reply_text(fortune)
+    
 def main():
     updater = Updater('1244083311:AAHpqDOv38tDtgm7IRAaHQRYtGsHZeukB8E')
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('bop', bop))
+    dp.add_handler(CommandHandler('fortune', fortune))
     updater.start_polling()
     updater.idle()
 
