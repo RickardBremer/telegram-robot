@@ -2,11 +2,16 @@ import subprocess
 from github import Github
 from datetime import datetime, timedelta
 from telegram.ext import Updater, CommandHandler
+from shutil import which
 
 
 def project(bot, update):
     update.message.reply_text("Redmine : http://64.227.73.149/redmine/\
                               \nGithub: https://github.com/alpha031/firewall/")
+
+
+def is_tool(name):
+    return which(name) is not None
 
 
 def latest_commit(bot, update):
@@ -30,8 +35,11 @@ def help_commands(bot, update):
 
 
 def fortune(bot, update):
-    fortune = subprocess.getoutput('fortune')
-    update.message.reply_text(fortune)
+    if which('fortune'):
+        fortune = subprocess.getoutput('fortune')
+        update.message.reply_text(fortune)
+    else:
+        update.message.reply_text('Sorry, fortune not installd')
 
 
 def main():
