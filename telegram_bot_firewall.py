@@ -5,7 +5,9 @@ from telegram.ext import Updater, CommandHandler
 
 
 def project(bot, update):
-    update.message.reply_text("Redmine : http://64.227.73.149/redmine/\nGithub: https://github.com/alpha031/firewall/")
+    update.message.reply_text("Redmine : http://64.227.73.149/redmine/\
+                              \nGithub: https://github.com/alpha031/firewall/")
+
 
 def latest_commit(bot, update):
     with open('git_token') as file:
@@ -23,7 +25,7 @@ def help_commands(bot, update):
     help_commands = "Commands available :\n "
     commands = ["help", "fortune", "latest_commit", "project"]
     for item in commands:
-        help_commands += item + "\n "     
+        help_commands += item + "\n"
     update.message.reply_text(help_commands)
 
 
