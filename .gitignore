@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#telegram token
+#Tokens
 telegram_token
 git_token
 

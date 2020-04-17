@@ -14,16 +14,16 @@ def latest_commit(bot, update):
         access = Github(git_token)
         org = access.get_organization('alpha031')
         code = org.get_repo('firewall')
-        since = datetime.now() - timedelta(days=1)
+        since = datetime.now() - timedelta(days=7)
         commits = code.get_commits(since=since)
         update.message.reply_text(commits[0])
 
 
 def help_commands(bot, update):
-    help_commands = "Commands available : "
+    help_commands = "Commands available :\n "
     commands = ["help", "fortune", "latest_commit", "project"]
     for item in commands:
-        help_commands += item + " : "     
+        help_commands += item + "\n "     
     update.message.reply_text(help_commands)
 
 
