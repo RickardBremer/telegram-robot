@@ -1,2 +1,2 @@
 telegram==0.0.1
-requests==2.23.0
+PyGithub==1.47

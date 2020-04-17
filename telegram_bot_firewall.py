@@ -9,8 +9,6 @@ def project(bot, update):
 
 def latest_commit(bot, update):
     with open('git_token') as file:
-        import pdb
-        pdb.set_trace()
         git_token = file.read()
         git_token = git_token.rstrip('\n')
         access = Github(git_token)
