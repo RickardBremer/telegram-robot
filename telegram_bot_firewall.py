@@ -46,7 +46,7 @@ def main():
     with open('telegram_token') as file:
         telegram_token = file.read()
         telegram_token = telegram_token.rstrip('\n')
-    updater = Updater(telegram_token)
+    updater = Updater(telegram_token, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('fortune', fortune))
     dp.add_handler(CommandHandler('latest_commit', latest_commit))
