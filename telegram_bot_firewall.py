@@ -1,11 +1,12 @@
 import subprocess
 from github import Github
 from datetime import datetime, timedelta
-from telegram.ext import Updater, CommandHandler
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
 from shutil import which
 
 
-def project(bot, update):
+def project(update: Update, context: CallbackContext):
     update.message.reply_text("Redmine : http://64.227.73.149/redmine/\
                               \nGithub: https://github.com/alpha031/firewall/")
 
@@ -14,7 +15,7 @@ def is_tool(name):
     return which(name) is not None
 
 
-def latest_commit(bot, update):
+def latest_commit(update: Update, context: CallbackContext):
     with open('git_token') as file:
         git_token = file.read()
         git_token = git_token.rstrip('\n')
@@ -26,7 +27,7 @@ def latest_commit(bot, update):
         update.message.reply_text(commits[0])
 
 
-def help_commands(bot, update):
+def help_commands(update: Update, context: CallbackContext):
     help_commands = "Commands available :\n "
     commands = ["help", "fortune", "latest_commit", "project"]
     for item in commands:
@@ -34,7 +35,7 @@ def help_commands(bot, update):
     update.message.reply_text(help_commands)
 
 
-def fortune(bot, update):
+def fortune(update: Update, context: CallbackContext):
     if which('fortune'):
         fortune = subprocess.getoutput('fortune')
         update.message.reply_text(fortune)
