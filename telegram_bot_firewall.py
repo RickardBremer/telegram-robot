@@ -15,7 +15,7 @@ def is_tool(name):
     return which(name) is not None
 
 
-def latest_commit(update: Update, context: CallbackContext):
+def latest_commit(update, context):
     with open('git_token') as file:
         git_token = file.read()
         git_token = git_token.rstrip('\n')
@@ -24,7 +24,7 @@ def latest_commit(update: Update, context: CallbackContext):
         update.message.reply_text(branch.commit.sha)
 
 
-def help_commands(update: Update, context: CallbackContext):
+def help_commands(update, context):
     help_commands = "Commands available :\n "
     commands = ["help", "fortune", "latest_commit", "project"]
     for item in commands:
@@ -32,7 +32,7 @@ def help_commands(update: Update, context: CallbackContext):
     update.message.reply_text(help_commands)
 
 
-def fortune(update: Update, context: CallbackContext):
+def fortune(update, context):
     if which('fortune'):
         fortune = subprocess.getoutput('fortune')
         update.message.reply_text(fortune)
