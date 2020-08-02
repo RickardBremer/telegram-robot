@@ -20,11 +20,8 @@ def latest_commit(update: Update, context: CallbackContext):
         git_token = file.read()
         git_token = git_token.rstrip('\n')
         access = Github(git_token)
-        org = access.get_organization('alpha031')
-        code = org.get_repo('firewall')
-        since = datetime.now() - timedelta(days=7)
-        commits = code.get_commits(since=since)
-        update.message.reply_text(commits[0])
+        branch = access.get_repo("RickardBremer/telegram-bot-firewall").get_branch("master")
+        update.message.reply_text(branch.commit.sha)
 
 
 def help_commands(update: Update, context: CallbackContext):
