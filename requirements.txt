@@ -1,2 +1,2 @@
-telegram==0.0.1
-PyGithub==1.47
+PyGithub==1.51
+python-telegram-bot==12.8
