@@ -19,7 +19,7 @@ def latest_commit(update, context):
         git_token = file.read()
         git_token = git_token.rstrip('\n')
         access = Github(git_token)
-        branch = access.get_repo("RickardBremer/telegram-robot").get_branch("master")
+        branch = access.get_repo("https://github.com/RickardBremer/telegram-robot").get_branch("master")
         update.message.reply_text(branch.commit.sha)
 
 
