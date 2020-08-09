@@ -7,7 +7,8 @@ from shutil import which
 
 
 def project(update, context):
-    update.message.reply_text("Github: https://github.com/RickardBremer/telegram-bot-firewall")
+    update.message.reply_text("Github:
+                              https://github.com/RickardBremer/telegram-robot")
 
 
 def is_tool(name):
