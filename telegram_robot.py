@@ -7,8 +7,7 @@ from shutil import which
 
 
 def project(update, context):
-    update.message.reply_text("Github:
-                              https://github.com/RickardBremer/telegram-robot")
+    update.message.reply_text("Github: https://github.com/RickardBremer/telegram-robot")
 
 
 def is_tool(name):
@@ -20,7 +19,7 @@ def latest_commit(update, context):
         git_token = file.read()
         git_token = git_token.rstrip('\n')
         access = Github(git_token)
-        branch = access.get_repo("RickardBremer/telegram-bot-firewall").get_branch("master")
+        branch = access.get_repo("RickardBremer/telegram-robot").get_branch("master")
         update.message.reply_text(branch.commit.sha)
 
 
