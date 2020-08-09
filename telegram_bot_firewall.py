@@ -6,9 +6,8 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 from shutil import which
 
 
-def project(update: Update, context: CallbackContext):
-    update.message.reply_text("Redmine : http://64.227.73.149/redmine/\
-                              \nGithub: https://github.com/alpha031/firewall/")
+def project(update, context):
+    update.message.reply_text("Github: https://github.com/RickardBremer/telegram-bot-firewall")
 
 
 def is_tool(name):
